@@ -46,14 +46,4 @@ public class User {
     @Column(name = "CPF",nullable = true, unique = true)
     private String cpf;
 
-//    @OneToMany(cascade = {CascadeType.PERSIST})
-//    @JoinColumn(name = "idReport")
-//    public List<Report> report;
-
-
-//    @OneToOne(cascade = {CascadeType.PERSIST})
-//    @JoinColumn(name = "ID_USER")
-//    private Address address;
-//
-
 }
