@@ -1,6 +1,8 @@
 package com.safewoman.safewoman.service;
 
+import com.safewoman.safewoman.dto.response.UserResponse;
 import com.safewoman.safewoman.entities.Report;
+import com.safewoman.safewoman.entities.User;
 import com.safewoman.safewoman.repository.ReportRepository;
 import com.safewoman.safewoman.dto.request.ReportRequest;
 import com.safewoman.safewoman.dto.response.ReportResponse;
@@ -10,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ReportService {
@@ -18,7 +21,7 @@ public class ReportService {
     private ModelMapper modelMapper;
 
     @Autowired
-    ReportRepository reportRepository;
+    private static ReportRepository reportRepository;
 
     public ReportResponse register(ReportRequest request){
         Report report = modelMapper.map(request, Report.class);
@@ -51,5 +54,11 @@ public class ReportService {
             findByOffenseType.forEach(f -> result.add(modelMapper.map(f, ReportRequest.class)));
         }
         return result;
+    }
+
+    public List<ReportResponse> findAll() {
+        List<Report> report = reportRepository.findAll();
+        return report.stream().map(r -> modelMapper.map(r, ReportResponse.class)).collect(Collectors.toList());
+
     }
 }

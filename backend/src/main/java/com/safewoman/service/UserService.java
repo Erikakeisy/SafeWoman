@@ -59,4 +59,11 @@ public class UserService {
             userRepository.deleteById(id);
         }
     }
+
+    public UserResponse updateUser(Long id, UserRequest userRequest) {
+        User user = modelMapper.map(userRequest, User.class);
+        this.userRepository.save(user);
+        return modelMapper.map(user, UserResponse.class);
+
+    }
 }

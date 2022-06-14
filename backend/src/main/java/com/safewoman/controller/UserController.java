@@ -1,10 +1,10 @@
 package com.safewoman.safewoman.controller;
 
+import com.safewoman.safewoman.entities.User;
 import com.safewoman.safewoman.repository.UserRepository;
 import com.safewoman.safewoman.service.UserService;
 import com.safewoman.safewoman.dto.request.UserRequest;
 import com.safewoman.safewoman.dto.response.UserResponse;
-import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -48,17 +48,17 @@ public class UserController {
     public void delete (@PathVariable Long id){
         userService.delete(id);
     }
+
     @DeleteMapping("/user/delete")
     public void deleteUser (@RequestBody User user){
-        userRepository.delete((com.safewoman.safewoman.entities.User) user);
+        userRepository.delete(user);
     }
-//    @PutMapping("user/change")
-//    public User change(@RequestBody UserResponse userResponse){
-//        return userRepository.save(userResponse);
-//    }
 
-
-
+    @PatchMapping("user/update/{id}")
+    public ResponseEntity<UserResponse> updateById(@PathVariable Long id, @RequestBody UserRequest userRequest){
+        UserResponse request = userService.updateUser(id, userRequest);
+        return ResponseEntity.ok(request);
+    }
 
 
 

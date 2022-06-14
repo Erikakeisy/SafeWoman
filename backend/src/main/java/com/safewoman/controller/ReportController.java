@@ -1,9 +1,9 @@
 package com.safewoman.safewoman.controller;
 
-import com.safewoman.safewoman.repository.ReportRepository;
-import com.safewoman.safewoman.service.ReportService;
 import com.safewoman.safewoman.dto.request.ReportRequest;
 import com.safewoman.safewoman.dto.response.ReportResponse;
+import com.safewoman.safewoman.entities.Report;
+import com.safewoman.safewoman.service.ReportService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,10 +16,7 @@ import java.util.List;
 public class ReportController {
 
     @Autowired
-    ReportService reportService;
-
-    @Autowired
-    ReportRepository reportRepository;
+    private ReportService reportService;
 
     @PostMapping("/create/report")
     public ReportResponse create (@Valid @RequestBody ReportRequest request){
@@ -38,4 +35,10 @@ public class ReportController {
     public ResponseEntity<List<ReportRequest>> findByOffenseType(@Valid @PathVariable String offensetype){
         return ResponseEntity.ok(reportService.findByOffenseType(offensetype));
     }
+
+    @GetMapping
+    public ResponseEntity<List<ReportResponse>> findAllReports(){
+        return ResponseEntity.ok(reportService.findAll());
+    }
+
 }
