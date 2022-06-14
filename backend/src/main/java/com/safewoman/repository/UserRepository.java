@@ -1,6 +1,6 @@
-package com.safewoman.safewoman.repository;
+package com.safewoman.repository;
 
-import com.safewoman.safewoman.entities.User;
+import com.safewoman.entities.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

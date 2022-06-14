@@ -1,4 +1,4 @@
-package com.safewoman.safewoman.dto.request;
+package com.safewoman.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

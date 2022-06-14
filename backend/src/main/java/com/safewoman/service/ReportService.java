@@ -1,11 +1,9 @@
-package com.safewoman.safewoman.service;
+package com.safewoman.service;
 
-import com.safewoman.safewoman.dto.response.UserResponse;
-import com.safewoman.safewoman.entities.Report;
-import com.safewoman.safewoman.entities.User;
-import com.safewoman.safewoman.repository.ReportRepository;
-import com.safewoman.safewoman.dto.request.ReportRequest;
-import com.safewoman.safewoman.dto.response.ReportResponse;
+import com.safewoman.entities.Report;
+import com.safewoman.repository.ReportRepository;
+import com.safewoman.dto.request.ReportRequest;
+import com.safewoman.dto.response.ReportResponse;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,7 +19,7 @@ public class ReportService {
     private ModelMapper modelMapper;
 
     @Autowired
-    private static ReportRepository reportRepository;
+    private ReportRepository reportRepository;
 
     public ReportResponse register(ReportRequest request){
         Report report = modelMapper.map(request, Report.class);

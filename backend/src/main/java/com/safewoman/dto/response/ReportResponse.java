@@ -1,4 +1,4 @@
-package com.safewoman.safewoman.dto.response;
+package com.safewoman.dto.response;
 
 
 import lombok.AllArgsConstructor;

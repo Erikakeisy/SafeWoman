@@ -1,4 +1,4 @@
-package com.safewoman.safewoman.entities;
+package com.safewoman.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Data
-@Entity
+@Entity(name = "USERS")
 @AllArgsConstructor
 @NoArgsConstructor
 public class User {

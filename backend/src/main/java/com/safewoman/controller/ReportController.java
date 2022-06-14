@@ -1,9 +1,8 @@
-package com.safewoman.safewoman.controller;
+package com.safewoman.controller;
 
-import com.safewoman.safewoman.dto.request.ReportRequest;
-import com.safewoman.safewoman.dto.response.ReportResponse;
-import com.safewoman.safewoman.entities.Report;
-import com.safewoman.safewoman.service.ReportService;
+import com.safewoman.dto.request.ReportRequest;
+import com.safewoman.dto.response.ReportResponse;
+import com.safewoman.service.ReportService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

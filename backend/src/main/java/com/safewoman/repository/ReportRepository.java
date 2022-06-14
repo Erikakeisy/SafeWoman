@@ -1,10 +1,12 @@
-package com.safewoman.safewoman.repository;
+package com.safewoman.repository;
 
-import com.safewoman.safewoman.entities.Report;
+import com.safewoman.entities.Report;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public interface ReportRepository extends JpaRepository<Report, Long> {
     List<Report> findByCity(String city);
     List<Report> findByState(String state);

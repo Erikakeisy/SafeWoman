@@ -1,4 +1,4 @@
-package com.safewoman.safewoman.config;
+package com.safewoman.config;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;

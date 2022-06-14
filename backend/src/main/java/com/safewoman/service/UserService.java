@@ -1,10 +1,10 @@
-package com.safewoman.safewoman.service;
+package com.safewoman.service;
 
-import com.safewoman.safewoman.entities.User;
-import com.safewoman.safewoman.exception.ResourceNotFound;
-import com.safewoman.safewoman.repository.UserRepository;
-import com.safewoman.safewoman.dto.request.UserRequest;
-import com.safewoman.safewoman.dto.response.UserResponse;
+import com.safewoman.entities.User;
+import com.safewoman.exception.ResourceNotFound;
+import com.safewoman.repository.UserRepository;
+import com.safewoman.dto.request.UserRequest;
+import com.safewoman.dto.response.UserResponse;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

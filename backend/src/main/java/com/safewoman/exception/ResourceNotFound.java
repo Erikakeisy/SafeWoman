@@ -1,4 +1,4 @@
-package com.safewoman.safewoman.exception;
+package com.safewoman.exception;
 
 import org.springframework.web.bind.annotation.ResponseStatus;
 
