@@ -17,6 +17,21 @@
           </config>
         </ContributedStateBase>
       </target>
+      <target name="WSL2" type="wsl" uuid="2330fc76-66a1-4863-b65f-066d4a7600b9">
+        <config>
+          <option name="distributionMsId" value="Ubuntu-20.04" />
+        </config>
+        <ContributedStateBase type="JavaLanguageRuntime">
+          <config>
+            <option name="homePath" value="/home/yasmin/.jdks/azul-11.0.15" />
+          </config>
+        </ContributedStateBase>
+        <ContributedStateBase type="MavenRuntime">
+          <config>
+            <option name="homePath" value="/mnt/c/ProgramData/chocolatey/lib/maven/apache-maven-3.8.4/bin/mvn" />
+          </config>
+        </ContributedStateBase>
+      </target>
     </targets>
   </component>
 </project>
