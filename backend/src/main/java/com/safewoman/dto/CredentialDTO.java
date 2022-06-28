@@ -1,2 +1,11 @@
-package com.safewoman.dto;public class CredentialDTO {
+package com.safewoman.dto;
+
+import lombok.Data;
+
+@Data
+public class CredentialDTO {
+
+    private String email;
+    private String password;
+
 }

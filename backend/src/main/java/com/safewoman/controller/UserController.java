@@ -1,5 +1,7 @@
 package com.safewoman.controller;
 
+import com.safewoman.dto.request.CreateNewUserRequest;
+import com.safewoman.dto.response.CreateNewUserResponse;
 import com.safewoman.entities.User;
 import com.safewoman.repository.UserRepository;
 import com.safewoman.service.UserService;
@@ -27,34 +29,22 @@ public class UserController {
         List<UserResponse> response = userService.findAll();
         return ResponseEntity.ok(response);
     }
-    @PostMapping("/user/register")
-    public UserResponse create (@Valid @RequestBody UserRequest request){
-        UserResponse response = userService.register(request);
-        return response;
+
+    //Rota de cadastro simples
+    @PostMapping("/user/create")
+    public ResponseEntity<CreateNewUserResponse> createNewUser(@RequestBody CreateNewUserRequest request){
+        CreateNewUserResponse response = userService.createNewUser(request);
+        return ResponseEntity.ok(response);
+
     }
 
-    @GetMapping("/user/name/{name}")
-    public ResponseEntity<List<UserRequest>> findByName(@Valid @PathVariable String name){
-        return ResponseEntity.ok(userService.findByName(name));
-    }
-
-    @GetMapping("/user/id/{id}")
-    public ResponseEntity<UserResponse> findById(@PathVariable Long id){
-        UserResponse request = userService.findById(id);
-        return ResponseEntity.ok(request);
-    }
-
-    @DeleteMapping("/user/deleteId/{id}")
+    @DeleteMapping("/user/{id}")
     public void delete (@PathVariable Long id){
         userService.delete(id);
     }
 
-    @DeleteMapping("/user/delete")
-    public void deleteUser (@RequestBody User user){
-        userRepository.delete(user);
-    }
 
-    @PatchMapping("user/update/{id}")
+    @PatchMapping("user/{id}")
     public ResponseEntity<UserResponse> updateById(@PathVariable Long id, @RequestBody UserRequest userRequest){
         UserResponse request = userService.updateUser(id, userRequest);
         return ResponseEntity.ok(request);

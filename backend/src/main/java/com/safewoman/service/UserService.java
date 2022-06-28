@@ -1,5 +1,7 @@
 package com.safewoman.service;
 
+import com.safewoman.dto.request.CreateNewUserRequest;
+import com.safewoman.dto.response.CreateNewUserResponse;
 import com.safewoman.entities.User;
 import com.safewoman.exception.ResourceNotFound;
 import com.safewoman.repository.UserRepository;
@@ -7,6 +9,8 @@ import com.safewoman.dto.request.UserRequest;
 import com.safewoman.dto.response.UserResponse;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCrypt;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -25,22 +29,13 @@ public class UserService {
 
     @Autowired
     UserRepository userRepository;
-
-    public UserResponse register(UserRequest request){
+    public CreateNewUserResponse createNewUser(CreateNewUserRequest request){
         User user = modelMapper.map(request, User.class);
-        this.userRepository.save(user);
-        return modelMapper.map(user, UserResponse.class);
+        user.setPassword(passwordEncoder().encode(user.getPassword()));
+        userRepository.save(user);
+        return modelMapper.map(user, CreateNewUserResponse.class);
     }
 
-    public List<UserRequest> findByName(String name){
-        List<UserRequest> result = new ArrayList<>();
-        List<User> findByName = userRepository.findByName(name);
-        if (!findByName.isEmpty()){
-            findByName.forEach(f -> result.add(modelMapper.map(f, UserRequest.class)));
-        }
-        return result;
-
-    }
 
     public UserResponse findById(Long id) {
         User user = userRepository.findById(id)
@@ -62,8 +57,13 @@ public class UserService {
 
     public UserResponse updateUser(Long id, UserRequest userRequest) {
         User user = modelMapper.map(userRequest, User.class);
-        this.userRepository.save(user);
+        userRepository.save(user);
         return modelMapper.map(user, UserResponse.class);
 
     }
+
+    private BCryptPasswordEncoder passwordEncoder(){
+        return new BCryptPasswordEncoder();
+    }
+
 }

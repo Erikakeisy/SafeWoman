@@ -1,4 +1,17 @@
-package com.safewoman.exception;
+package com.safewoman.dto;
 
-public class ProfileEnum {
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
+public enum ProfileEnum {
+
+    ADMIN("Admin"),
+    ENTERPRISE("Enterprise"),
+    CLIENT("Client");
+
+    @Getter
+    private String description;
+
 }

@@ -1,4 +1,12 @@
-package com.safewoman.dto.request;
+package com.safewoman.dto.response;
 
-public class CreateNewUserRequest {
+import lombok.Data;
+
+@Data
+public class CreateNewUserResponse {
+
+    private String username;
+    private String password;
+    private String email;
+
 }
