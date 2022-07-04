@@ -21,6 +21,9 @@ spring:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     open-in-view: false
 
-
 server:
     port: 8080
+
+jwt:
+  secret: WordToAddInTokenAccess
+  expiration: 640000000

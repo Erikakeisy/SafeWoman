@@ -1,20 +1,16 @@
 package com.safewoman.controller;
 
-import com.safewoman.dto.request.CreateNewUserRequest;
-import com.safewoman.dto.response.CreateNewUserResponse;
 import com.safewoman.entities.User;
 import com.safewoman.repository.UserRepository;
 import com.safewoman.service.UserService;
 import com.safewoman.dto.request.UserRequest;
-import com.safewoman.dto.response.UserResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
 
-@RequestMapping("/safewoman")
+@RequestMapping("/api")
 @RestController
 public class UserController {
 
@@ -24,16 +20,15 @@ public class UserController {
     @Autowired
     UserRepository userRepository;
 
-    @GetMapping("/user/list")
-    public ResponseEntity<List<UserResponse>> findAll(){
-        List<UserResponse> response = userService.findAll();
+    @GetMapping("/states")
+    public ResponseEntity<List<User>> findAll(){
+        List<User> response = userService.findAll();
         return ResponseEntity.ok(response);
     }
 
-    //Rota de cadastro simples
     @PostMapping("/user/create")
-    public ResponseEntity<CreateNewUserResponse> createNewUser(@RequestBody CreateNewUserRequest request){
-        CreateNewUserResponse response = userService.createNewUser(request);
+    public ResponseEntity<User> createNewUser(@RequestBody UserRequest request){
+        User response = userService.createNewUser(request);
         return ResponseEntity.ok(response);
 
     }
@@ -45,8 +40,8 @@ public class UserController {
 
 
     @PatchMapping("user/{id}")
-    public ResponseEntity<UserResponse> updateById(@PathVariable Long id, @RequestBody UserRequest userRequest){
-        UserResponse request = userService.updateUser(id, userRequest);
+    public ResponseEntity<User> updateById(@PathVariable Long id, @RequestBody UserRequest userRequest){
+        User request = userService.updateUser(id, userRequest);
         return ResponseEntity.ok(request);
     }
 

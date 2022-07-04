@@ -1,15 +1,16 @@
 package com.safewoman.entities;
 
-import com.safewoman.config.security.UserSS;
-import com.safewoman.dto.ProfileEnum;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.safewoman.dto.constants.Profile;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
-import java.util.ArrayList;
-import java.util.List;
+import java.time.LocalDate;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Data
 @Entity(name = "tb_users")
@@ -43,7 +44,8 @@ public class User {
     @Column(name = "cpf" ,unique = true)
     private String cpf;
 
-    private ProfileEnum profile;
+    private Profile profiles;
 
+    protected LocalDate creationDate = LocalDate.now();
 
 }

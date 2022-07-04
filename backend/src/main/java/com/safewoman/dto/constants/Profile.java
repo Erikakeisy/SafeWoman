@@ -1,4 +1,4 @@
-package com.safewoman.dto;
+package com.safewoman.dto.constants;
 
 public enum Profile {
 

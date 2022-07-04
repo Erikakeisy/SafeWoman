@@ -1,7 +1,6 @@
 package com.safewoman.service;
 
-import com.safewoman.dto.request.CreateNewUserRequest;
-import com.safewoman.dto.response.CreateNewUserResponse;
+import com.safewoman.dto.request.UserRequest;
 import com.safewoman.entities.User;
 import com.safewoman.repository.UserRepository;
 import com.safewoman.util.TestUtils;
@@ -14,7 +13,6 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.io.IOException;
-import java.util.Optional;
 
 import static org.mockito.Mockito.*;
 
@@ -33,10 +31,10 @@ public class UserServiceTest {
 
     @Test
     public void createNewUser() throws IOException {
-        CreateNewUserRequest newUser = TestUtils.getObjectFromJsonFile("json/CreateNewUserRequest.json", CreateNewUserRequest.class);
-        User user = TestUtils.getObjectFromJsonFile("json/CreateNewUserRequest.json", User.class);
+        UserRequest newUser = TestUtils.getObjectFromJsonFile("json/UserRequest.json", UserRequest.class);
+        User user = TestUtils.getObjectFromJsonFile("json/UserRequest.json", User.class);
         userRepository.save(user);
-        when(userService.createNewUser(newUser)).thenReturn(new CreateNewUserResponse());
+        when(userService.createNewUser(newUser)).thenReturn(new User());
         when(userRepository.save(user)).thenReturn(new User());
 
         verify(userRepository, times(1)).save(any(User.class));

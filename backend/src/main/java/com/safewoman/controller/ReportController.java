@@ -1,7 +1,7 @@
 package com.safewoman.controller;
 
 import com.safewoman.dto.request.ReportRequest;
-import com.safewoman.dto.response.ReportResponse;
+import com.safewoman.entities.Report;
 import com.safewoman.service.ReportService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,12 +18,12 @@ public class ReportController {
     private ReportService reportService;
 
     @PostMapping("/create/report")
-    public ReportResponse create (@Valid @RequestBody ReportRequest request){
-        ReportResponse response = reportService.register(request);
+    public Report create (@Valid @RequestBody ReportRequest request){
+        Report response = reportService.register(request);
         return response;
     }
     @GetMapping("report/city/{city}")
-    public ResponseEntity<List<ReportRequest>> findByCity(@Valid @PathVariable String city){
+    public ResponseEntity<List<Report>> findByCity(@Valid @PathVariable String city){
         return ResponseEntity.ok(reportService.findByCity(city));
     }
     @GetMapping("report/state/{state}")
@@ -36,7 +36,7 @@ public class ReportController {
     }
 
     @GetMapping
-    public ResponseEntity<List<ReportResponse>> findAllReports(){
+    public ResponseEntity<List<Report>> findAllReports(){
         return ResponseEntity.ok(reportService.findAll());
     }
 

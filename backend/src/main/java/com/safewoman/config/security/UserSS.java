@@ -1,6 +1,6 @@
 package com.safewoman.config.security;
 
-import com.safewoman.dto.ProfileEnum;
+import com.safewoman.dto.constants.Profile;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -8,7 +8,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 @Data
@@ -20,7 +19,7 @@ public class UserSS implements UserDetails {
     private String password;
     private final Collection<? extends GrantedAuthority> authorities;
 
-    public UserSS(Long id, String email, String password, List<ProfileEnum> profiles) {
+    public UserSS(Long id, String email, String password, List<Profile> profiles) {
         super();
         this.id = id;
         this.email = email;

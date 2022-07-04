@@ -3,7 +3,6 @@ package com.safewoman.service;
 import com.safewoman.entities.Report;
 import com.safewoman.repository.ReportRepository;
 import com.safewoman.dto.request.ReportRequest;
-import com.safewoman.dto.response.ReportResponse;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,24 +13,23 @@ import java.util.stream.Collectors;
 
 @Service
 public class ReportService {
-
     @Autowired
     private ModelMapper modelMapper;
 
     @Autowired
     private ReportRepository reportRepository;
 
-    public ReportResponse register(ReportRequest request){
+    public Report register(ReportRequest request){
         Report report = modelMapper.map(request, Report.class);
         this.reportRepository.save(report);
-        return modelMapper.map(report, ReportResponse.class);
+        return report;
     }
 
-    public List<ReportRequest> findByCity(String city){
-        List<ReportRequest> result = new ArrayList<>();
+    public List<Report> findByCity(String city){
+        List<Report> result = new ArrayList<>();
         List<Report> findByCity = reportRepository.findByCity(city);
         if (!findByCity.isEmpty()){
-            findByCity.forEach(f -> result.add(modelMapper.map(f, ReportRequest.class)));
+            findByCity.forEach(f -> result.add(modelMapper.map(f, Report.class)));
         }
         return result;
     }
@@ -54,9 +52,8 @@ public class ReportService {
         return result;
     }
 
-    public List<ReportResponse> findAll() {
+    public List<Report> findAll() {
         List<Report> report = reportRepository.findAll();
-        return report.stream().map(r -> modelMapper.map(r, ReportResponse.class)).collect(Collectors.toList());
-
+        return report.stream().map(r -> modelMapper.map(r, Report.class)).collect(Collectors.toList());
     }
 }
