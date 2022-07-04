@@ -34,20 +34,20 @@ public class ReportService {
         return result;
     }
 
-    public List<ReportRequest> findByState(String state){
-        List<ReportRequest> result = new ArrayList<>();
+    public List<Report> findByState(String state){
+        List<Report> result = new ArrayList<>();
         List<Report> findByState = reportRepository.findByState(state);
         if (!findByState.isEmpty()){
-            findByState.forEach(f -> result.add(modelMapper.map(f, ReportRequest.class)));
+            findByState.forEach(f -> result.add(modelMapper.map(f, Report.class)));
         }
         return result;
     }
 
-    public List<ReportRequest> findByOffenseType(String offensetype){
-        List<ReportRequest> result = new ArrayList<>();
+    public List<Report> findByOffenseType(String offensetype){
+        List<Report> result = new ArrayList<>();
         List<Report> findByOffenseType = reportRepository.findByOffenseType(offensetype);
         if (!findByOffenseType.isEmpty()){
-            findByOffenseType.forEach(f -> result.add(modelMapper.map(f, ReportRequest.class)));
+            findByOffenseType.forEach(f -> result.add(modelMapper.map(f, Report.class)));
         }
         return result;
     }

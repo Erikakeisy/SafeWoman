@@ -27,11 +27,11 @@ public class ReportController {
         return ResponseEntity.ok(reportService.findByCity(city));
     }
     @GetMapping("report/state/{state}")
-    public ResponseEntity<List<ReportRequest>> findByState(@Valid @PathVariable String state){
+    public ResponseEntity<List<Report>> findByState(@Valid @PathVariable String state){
         return ResponseEntity.ok(reportService.findByState(state));
     }
     @GetMapping("report/offensetype/{offensetype}")
-    public ResponseEntity<List<ReportRequest>> findByOffenseType(@Valid @PathVariable String offensetype){
+    public ResponseEntity<List<Report>> findByOffenseType(@Valid @PathVariable String offensetype){
         return ResponseEntity.ok(reportService.findByOffenseType(offensetype));
     }
 
