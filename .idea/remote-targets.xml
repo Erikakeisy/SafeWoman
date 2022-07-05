@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="RemoteTargetsManager">
+    <targets>
+      <target name="WSL" type="wsl" uuid="fffea4b9-74da-4d57-8913-b719c0e53ed2">
+        <config>
+          <option name="distributionMsId" value="Ubuntu" />
+        </config>
+        <ContributedStateBase type="JavaLanguageRuntime">
+          <config>
+            <option name="homePath" value="/home/yasmin/.jdks/openjdk-18.0.1.1" />
+          </config>
+        </ContributedStateBase>
+        <ContributedStateBase type="MavenRuntime">
+          <config>
+            <option name="homePath" value="/mnt/c/ProgramData/chocolatey/lib/maven/apache-maven-3.8.4/bin/mvn" />
+          </config>
+        </ContributedStateBase>
+      </target>
+      <target name="WSL2" type="wsl" uuid="2330fc76-66a1-4863-b65f-066d4a7600b9">
+        <config>
+          <option name="distributionMsId" value="Ubuntu-20.04" />
+        </config>
+        <ContributedStateBase type="JavaLanguageRuntime">
+          <config>
+            <option name="homePath" value="/home/yasmin/.jdks/azul-11.0.15" />
+          </config>
+        </ContributedStateBase>
+        <ContributedStateBase type="MavenRuntime">
+          <config>
+            <option name="homePath" value="/mnt/c/ProgramData/chocolatey/lib/maven/apache-maven-3.8.4/bin/mvn" />
+          </config>
+        </ContributedStateBase>
+      </target>
+    </targets>
+  </component>
+</project>
