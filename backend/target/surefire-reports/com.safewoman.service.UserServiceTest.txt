@@ -1,0 +1,29 @@
+-------------------------------------------------------------------------------
+Test set: com.safewoman.service.UserServiceTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 2.862 s <<< FAILURE! - in com.safewoman.service.UserServiceTest
+createNewUser  Time elapsed: 0.097 s  <<< ERROR!
+com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: 
+Unrecognized field "id" (class com.safewoman.entities.User), not marked as ignorable (13 known properties: "gender", "userId", "profiles", "name", "creationDate", "phone", "username", "socialName", "cpf", "password", "email", "age", "city"])
+ at [Source: (String)"{
+  "id": null,
+  "socialName": null,
+  "name": "Yasmin",
+  "age": 19,
+  "phone": "41999",
+  "email": "yas@mail.com",
+  "gender": "Female",
+  "city": "Curitiba",
+  "cpf": "12414049190",
+  "password": "123",
+  "username": "yasminwz",
+  "profiles": [],
+  "creationDate": [
+    2022,
+    6,
+    29
+  ]
+}
+"; line: 2, column: 13] (through reference chain: com.safewoman.entities.User["id"])
+	at com.safewoman.service.UserServiceTest.createNewUser(UserServiceTest.java:35)
+
