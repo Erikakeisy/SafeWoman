@@ -24,12 +24,10 @@ public class ReportController {
         return response;
     }
 
-    //TODO getReportById
     @GetMapping("report/findById/{reportId}")
     public ResponseEntity<Report> findReportById(@PathVariable Long reportId){
         Report report = reportService.findById(reportId);
         return ResponseEntity.ok(report);
-
     }
 
     @GetMapping("report/city/{city}")

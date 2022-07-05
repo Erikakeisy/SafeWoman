@@ -54,11 +54,12 @@ public class UserService {
         }
     }
 
-    //TODO dar um jeito nesse roler
-    public User updateUser(Long userId, UserUpdateRequest userRequest) {
-        User user = modelMapper.map(userRequest, User.class);
-        userRepository.findById(userId).orElseThrow(() -> new UserNotFoundException("User with userId [{}]:" + userId + "not found"));
+    public User updateUser(Long userId, UserUpdateRequest userRequest){
+        User user = userRepository.findById(userId).orElseThrow(()-> new UserNotFoundException("User with userId: "+ userId + "Not found"));
+        user = modelMapper.map(userRequest, User.class);
         user.setPassword(passwordEncoder().encode(user.getPassword()));
+        user.setCpf(user.getCpf());
+        user.setUserId(userId);
         user.setProfiles(Profile.USER);
         return userRepository.save(user);
     }

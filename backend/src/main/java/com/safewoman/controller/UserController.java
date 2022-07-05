@@ -21,7 +21,7 @@ public class UserController {
     @Autowired
     UserRepository userRepository;
 
-    //TODO Permission URL for ADMIN
+
     @GetMapping("user/findAll")
     public ResponseEntity<List<User>> findAll(){
         List<User> response = userService.findAll();
