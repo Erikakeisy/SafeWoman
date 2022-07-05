@@ -45,14 +45,14 @@ public class UserService {
         return user.stream().map(c -> modelMapper.map(c, User.class)).collect(Collectors.toList());
     }
 
-    public void delete(@PathVariable Long id) {
-        Optional<User> user = userRepository.findById(id);
+    public void delete(@PathVariable Long userId) {
+        Optional<User> user = userRepository.findById(userId);
         if (user.isPresent()) {
-            userRepository.deleteById(id);
+            userRepository.deleteById(userId);
         }
     }
 
-    public User updateUser(Long id, UserRequest userRequest) {
+    public User updateUser(UserRequest userRequest) {
         User user = modelMapper.map(userRequest, User.class);
         userRepository.save(user);
         return user;

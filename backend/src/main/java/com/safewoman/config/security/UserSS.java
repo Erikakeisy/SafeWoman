@@ -14,14 +14,14 @@ import java.util.stream.Collectors;
 public class UserSS implements UserDetails {
 
     private static final long serialVersionUID = 1L;
-    private Long id;
+    private Long userId;
     private String email;
     private String password;
     private final Collection<? extends GrantedAuthority> authorities;
 
-    public UserSS(Long id, String email, String password, List<Profile> profiles) {
+    public UserSS(Long userId, String email, String password, List<Profile> profiles) {
         super();
-        this.id = id;
+        this.userId = userId;
         this.email = email;
         this.password = password;
         this.authorities = profiles.stream().map(x -> new SimpleGrantedAuthority(x.getDescription())).collect(Collectors.toSet());

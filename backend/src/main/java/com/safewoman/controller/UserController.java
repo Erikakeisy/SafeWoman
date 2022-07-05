@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RequestMapping("/api")
+@RequestMapping("/safewoman")
 @RestController
 public class UserController {
 
@@ -20,31 +20,33 @@ public class UserController {
     @Autowired
     UserRepository userRepository;
 
-    @GetMapping("/states")
+    //TODO Permission URL for ADMIN
+    @GetMapping("user/findAll")
     public ResponseEntity<List<User>> findAll(){
         List<User> response = userService.findAll();
         return ResponseEntity.ok(response);
     }
 
-    @PostMapping("/user/create")
+    //TODO GET USER BY ID
+//    @GetMapping("user/findById/{id}")
+
+
+    @PostMapping("user/create")
     public ResponseEntity<User> createNewUser(@RequestBody UserRequest request){
         User response = userService.createNewUser(request);
         return ResponseEntity.ok(response);
-
     }
 
-    @DeleteMapping("/user/{id}")
-    public void delete (@PathVariable Long id){
-        userService.delete(id);
+    @DeleteMapping("user/delete/{userId}")
+    public void delete (@PathVariable Long userId){
+        userService.delete(userId);
     }
 
-
-    @PatchMapping("user/{id}")
-    public ResponseEntity<User> updateById(@PathVariable Long id, @RequestBody UserRequest userRequest){
-        User request = userService.updateUser(id, userRequest);
-        return ResponseEntity.ok(request);
-    }
-
-
+//TODO PUT USER
+//    @PatchMapping("user/{userId}")
+//    public ResponseEntity<User> updateById(@PathVariable Long userId, @RequestBody UserRequest userRequest){
+//        User request = userService.updateUser(userId, userRequest);
+//        return ResponseEntity.ok(request);
+//    }
 
 }

@@ -13,7 +13,6 @@ public class ApiConfig {
     public ModelMapper modelMapper() {
         return new ModelMapper();
     }
-
     @Bean
     public ObjectMapper objectMapper() {
         ObjectMapper objectMapper = new ObjectMapper();
