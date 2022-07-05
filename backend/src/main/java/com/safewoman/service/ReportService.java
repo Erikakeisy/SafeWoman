@@ -76,8 +76,14 @@ public class ReportService {
         }
     }
 
-    public Object updateReportById(Long reportId) {
+    public Report findById(Long reportId) {
+        Report report = reportRepository.findById(reportId).orElseThrow(() -> new ReportNotFoundException("Report with reportId [{}]:" + reportId + "not found"));
+        return report;
+    }
 
-
+    public Report updateReportById(Long reportId, ReportRequest request) {
+        Report report = modelMapper.map(request, Report.class);
+        reportRepository.findById(reportId).orElseThrow(() -> new ReportNotFoundException("Report with reportId [{}]:" + reportId + "not found"));
+        return reportRepository.save(report);
     }
 }

@@ -1,9 +1,11 @@
 package com.safewoman.controller;
 
+import com.safewoman.dto.request.UserUpdateRequest;
 import com.safewoman.entities.User;
 import com.safewoman.repository.UserRepository;
 import com.safewoman.service.UserService;
 import com.safewoman.dto.request.UserRequest;
+import com.sun.xml.bind.v2.TODO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,7 +15,6 @@ import java.util.List;
 @RequestMapping("/safewoman")
 @RestController
 public class UserController {
-
     @Autowired
     UserService userService;
 
@@ -27,9 +28,12 @@ public class UserController {
         return ResponseEntity.ok(response);
     }
 
-    //TODO GET USER BY ID
-//    @GetMapping("user/findById/{id}")
+    @GetMapping("user/findById/{userId}")
+    public ResponseEntity<User> findById(@PathVariable Long userId){
+        User user = userService.findById(userId);
+        return ResponseEntity.ok(user);
 
+    }
 
     @PostMapping("user/create")
     public ResponseEntity<User> createNewUser(@RequestBody UserRequest request){
@@ -38,15 +42,15 @@ public class UserController {
     }
 
     @DeleteMapping("user/delete/{userId}")
-    public void delete (@PathVariable Long userId){
+    public ResponseEntity<?> delete (@PathVariable Long userId){
         userService.delete(userId);
+        return ResponseEntity.ok("User with useId: "  + userId + " delete with sucessful");
     }
 
-//TODO PUT USER
-//    @PatchMapping("user/{userId}")
-//    public ResponseEntity<User> updateById(@PathVariable Long userId, @RequestBody UserRequest userRequest){
-//        User request = userService.updateUser(userId, userRequest);
-//        return ResponseEntity.ok(request);
-//    }
+    @PutMapping("user/{userId}")
+    public ResponseEntity<User> updateById(@PathVariable Long userId, @RequestBody UserUpdateRequest userRequest){
+        User request = userService.updateUser(userId, userRequest);
+        return ResponseEntity.ok(request);
+    }
 
 }

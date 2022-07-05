@@ -17,7 +17,7 @@ public class Report {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "report_id")
-    private Long id;
+    private Long reportId;
 
     @Column
     @JsonFormat(pattern = "dd/MM/yyyy")

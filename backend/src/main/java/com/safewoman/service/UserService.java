@@ -1,8 +1,10 @@
 package com.safewoman.service;
 
 import com.safewoman.dto.constants.Profile;
+import com.safewoman.dto.request.UserUpdateRequest;
 import com.safewoman.entities.User;
-import com.safewoman.exception.ResourceNotFound;
+import com.safewoman.exception.ResourceNotFoundException;
+import com.safewoman.exception.UserNotFoundException;
 import com.safewoman.repository.UserRepository;
 import com.safewoman.dto.request.UserRequest;
 import org.modelmapper.ModelMapper;
@@ -26,8 +28,8 @@ public class UserService {
     @Autowired
     UserRepository userRepository;
 
-    public User createNewUser(UserRequest request) {
-        User user = modelMapper.map(request, User.class);
+    public User createNewUser(UserRequest userRequest) {
+        User user = modelMapper.map(userRequest, User.class);
         user.setPassword(passwordEncoder().encode(user.getPassword()));
         user.setProfiles(Profile.USER);
         userRepository.save(user);
@@ -36,7 +38,7 @@ public class UserService {
 
     public User findByEmail(String email) {
         User user = userRepository.findByEmail(email)
-                .orElseThrow(() -> new ResourceNotFound("Email:" + email + " User was that email not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Email:" + email + " User was that email not found"));
         return user;
     }
 
@@ -52,15 +54,22 @@ public class UserService {
         }
     }
 
-    public User updateUser(UserRequest userRequest) {
+    //TODO dar um jeito nesse roler
+    public User updateUser(Long userId, UserUpdateRequest userRequest) {
         User user = modelMapper.map(userRequest, User.class);
-        userRepository.save(user);
+        userRepository.findById(userId).orElseThrow(() -> new UserNotFoundException("User with userId [{}]:" + userId + "not found"));
+        user.setPassword(passwordEncoder().encode(user.getPassword()));
+        user.setProfiles(Profile.USER);
+        return userRepository.save(user);
+    }
+    public User findById(Long userId) {
+        User user = userRepository.findById(userId).orElseThrow(() -> new UserNotFoundException("User with userId [{}]:" + userId + "not found"));
         return user;
-
     }
 
     private BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
 
 }

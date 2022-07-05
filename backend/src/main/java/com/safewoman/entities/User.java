@@ -35,6 +35,7 @@ public class User {
     private String phone;
 
     @Email
+    @Column(unique = true)
     private String email;
 
     private String gender;
