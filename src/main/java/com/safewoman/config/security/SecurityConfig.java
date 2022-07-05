@@ -35,7 +35,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.addFilter(new JWTAuthorizationFilter(authenticationManager(), jwtUtil, userDetailsService));
 
         http.authorizeRequests()
-                .antMatchers("/safewoman/create/user", "/**").permitAll()
+                .antMatchers("/safewoman/create/user", "safe-woman.herokuapp.com/user/create", "/**").permitAll()
                 .anyRequest().authenticated();
 
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
