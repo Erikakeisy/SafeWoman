@@ -27,7 +27,3 @@ server:
 jwt:
   secret: WordToAddInTokenAccess
   expiration: 640000000
-
-java:
-  runtime:
-    version: 11
