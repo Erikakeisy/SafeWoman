@@ -37,14 +37,11 @@
             <artifactId>spring-security-oauth2</artifactId>
             <version>2.5.0.RELEASE</version>
         </dependency>
-<<<<<<< HEAD
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt</artifactId>
             <version>0.9.1</version>
         </dependency>
-=======
->>>>>>> master
         <!--DATABASE-->
         <dependency>
             <groupId>org.postgresql</groupId>
@@ -53,14 +50,11 @@
         </dependency>
         <!--UTIL-->
         <dependency>
-<<<<<<< HEAD
             <groupId>com.fasterxml.jackson.datatype</groupId>
             <artifactId>jackson-datatype-jsr310</artifactId>
             <version>2.13.3</version>
         </dependency>
         <dependency>
-=======
->>>>>>> master
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
@@ -92,27 +86,18 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-<<<<<<< HEAD
-=======
-        <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
->>>>>>> master
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
             <version>5.8.2</version>
             <scope>test</scope>
         </dependency>
-<<<<<<< HEAD
-=======
-        <!-- https://mvnrepository.com/artifact/junit/junit -->
->>>>>>> master
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.13.1</version>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>spring-mock-mvc</artifactId>
