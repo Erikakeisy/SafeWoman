@@ -17,11 +17,8 @@ import java.util.List;
 public class UserController {
     @Autowired
     UserService userService;
-
     @Autowired
     UserRepository userRepository;
-
-
     @GetMapping("user/findAll")
     public ResponseEntity<List<User>> findAll(){
         List<User> response = userService.findAll();
