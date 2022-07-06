@@ -37,16 +37,16 @@ public class Report {
 
     private String offenseType;
 
-    private boolean alone;
+    private String alone;
 
     @Column
     private String offenseLocation;
 
     @Column
-    private boolean policeReport;
+    private String policeReport;
 
     @Column
-    private boolean policeSolved;
+    private String policeSolved;
 
     @Column
     private String suspectParticulars;

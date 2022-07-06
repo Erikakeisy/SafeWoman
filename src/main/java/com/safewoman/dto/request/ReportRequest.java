@@ -35,7 +35,7 @@ public class ReportRequest {
     private String offenseType;
 
     @NotNull(message = "The field alone is required")
-    private boolean alone;
+    private String alone;
 
     @NotNull(message = "The field offenseParticulars is required")
     private String offenseParticulars;
@@ -44,10 +44,10 @@ public class ReportRequest {
     private String offenseLocation;
 
     @NotNull(message = "The field policeReport is required")
-    private boolean policeReport;
+    private String policeReport;
 
     @NotNull(message = "The field policeSolved is required")
-    private boolean policeSolved;
+    private String policeSolved;
 
     @NotNull(message = "The field policeReportParticulars is required")
     private String policeReportParticulars;
