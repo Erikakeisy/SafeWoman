@@ -58,7 +58,7 @@ public class ReportRequest {
     @NotNull(message = "The field observation is required")
     private String observation;
 
-    private Long userId;
+//    private Long userId;
 
 }
 
