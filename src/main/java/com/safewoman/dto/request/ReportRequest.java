@@ -37,9 +37,6 @@ public class ReportRequest {
     @NotNull(message = "The field alone is required")
     private String alone;
 
-    @NotNull(message = "The field offenseParticulars is required")
-    private String offenseParticulars;
-
     @NotNull(message = "The field offenseLocation is required")
     private String offenseLocation;
 
@@ -58,7 +55,7 @@ public class ReportRequest {
     @NotNull(message = "The field observation is required")
     private String observation;
 
-//    private Long userId;
+    private Long userId;
 
 }
 
