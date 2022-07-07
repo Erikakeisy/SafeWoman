@@ -2,9 +2,13 @@ package com.safewoman.config.security;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.safewoman.dto.CredentialDTO;
+import com.safewoman.entities.User;
+import com.safewoman.exception.UserNotFoundException;
+import com.safewoman.repository.UserRepository;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -24,6 +28,8 @@ import java.util.Date;
 @Data
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
+    @Autowired
+    private UserRepository userRepository;
     private AuthenticationManager authenticationManager;
     private JWTUtil jwtUtil;
 
@@ -43,10 +49,12 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     @Override
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response,
                                             FilterChain chain, Authentication authResult) throws IOException, ServletException {
-        String username = ((UserSS) authResult.getPrincipal()).getUsername();
-        String token = jwtUtil.generateToken(username);
+        String email = ((UserSS) authResult.getPrincipal()).getUsername();
+        String token = jwtUtil.generateToken(email);
         response.setHeader("Access-Control-Expose-Headers", "Authorization");
         response.setHeader("Authorization", "Bearer " + token);
+        User user = userRepository.findByEmail(email).orElseThrow(() -> new UserNotFoundException("User Not Found"));
+        response.setHeader("userId", user.getUserId().toString());
     }
 
     @Override
