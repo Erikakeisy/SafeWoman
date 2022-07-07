@@ -46,9 +46,6 @@ public class ReportRequest {
     @NotNull(message = "The field policeSolved is required")
     private String policeSolved;
 
-    @NotNull(message = "The field policeReportParticulars is required")
-    private String policeReportParticulars;
-
     @NotNull(message = "The field suspectParticulars is required")
     private String suspectParticulars;
 
