@@ -55,7 +55,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         response.setHeader("Access-Control-Expose-Headers", "Authorization");
         response.setHeader("Authorization", "Bearer " + token);
         User user = userRepository.findByEmail(email).orElseThrow(() -> new UserNotFoundException("User Not Found"));
-        response.setHeader("userId", user.getUserId().toString());
+//        response.setHeader("userId", user.getUserId().toString());
     }
 
     @Override
