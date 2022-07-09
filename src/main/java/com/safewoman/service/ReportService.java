@@ -27,8 +27,6 @@ public class ReportService {
     private UserRepository userRepository;
     public Report register(ReportRequest request){
         Report report = modelMapper.map(request, Report.class);
-        User user = userRepository.findById(request.getUserId()).orElseThrow(() -> new UserNotFoundException("User not found"));
-        request.setUserId(user.getUserId());
         this.reportRepository.save(report);
         return report;
     }
