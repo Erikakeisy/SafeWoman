@@ -52,7 +52,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                                             FilterChain chain, Authentication authResult) throws IOException, ServletException {
         String email = ((UserSS) authResult.getPrincipal()).getUsername();
         String token = jwtUtil.generateToken(email);
-        response.setHeader("Access-Control-Expose-Headers", "*");
+        response.setHeader("Access-Control-Expose-Headers", "Authorization");
         response.setHeader("Authorization", "Bearer " + token);
         User user = userRepository.findByEmail(email).orElseThrow(() -> new UserNotFoundException("User Not Found"));
         response.setHeader("userId", user.getUserId().toString());
